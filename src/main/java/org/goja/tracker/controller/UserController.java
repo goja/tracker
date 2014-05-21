@@ -1,4 +1,4 @@
-package org.goja.tracker;
+package org.goja.tracker.controller;
 
 import java.util.Map;
 
@@ -6,6 +6,8 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.goja.tracker.model.User;
+import org.goja.tracker.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +28,7 @@ public class UserController {
 	public String findAll(Map<String, Object> model) {
 		model.put("users", userService.findAll());
 		model.put("user", new User());
-		return "index";
+		return "user";
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -52,6 +54,6 @@ public class UserController {
 			return "redirect:/user/findAll";
 		}
 		model.put("users", userService.findAll());
-		return "index";
+		return "user";
 	}
 }

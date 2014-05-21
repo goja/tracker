@@ -1,4 +1,4 @@
-package org.goja.tracker;
+package org.goja.tracker.model;
 
 import java.io.Serializable;
 

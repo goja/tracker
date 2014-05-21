@@ -1,6 +1,8 @@
-package org.goja.tracker;
+package org.goja.tracker.service;
 
 import java.util.List;
+
+import org.goja.tracker.model.User;
 
 public interface UserService {
 

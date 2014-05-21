@@ -1,9 +1,12 @@
-package org.goja.tracker;
+package org.goja.tracker.service.impl;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.goja.tracker.model.User;
+import org.goja.tracker.repository.UserRepository;
+import org.goja.tracker.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
