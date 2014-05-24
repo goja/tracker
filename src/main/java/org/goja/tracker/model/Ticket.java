@@ -1,28 +1,24 @@
 package org.goja.tracker.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.goja.tracker.framework.AbstractEntity;
 import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
 
 @Entity
-public class Ticket implements Serializable {
+public class Ticket extends AbstractEntity implements Serializable {
 
 	private static final long serialVersionUID = 6232235360983944420L;
-
-	@Id
-	@GeneratedValue
-	private Long id;
 
 	@Enumerated(value = EnumType.STRING)
 	private Priority priority;
@@ -36,20 +32,10 @@ public class Ticket implements Serializable {
 	@OneToOne
 	private User assignee;
 
-	private Date created;
-
 	private String summary;
 
-	@OneToMany
+	@OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Note> notes;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Priority getPriority() {
 		return priority;
@@ -81,14 +67,6 @@ public class Ticket implements Serializable {
 
 	public void setAssignee(User assignee) {
 		this.assignee = assignee;
-	}
-
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
 	}
 
 	public String getSummary() {

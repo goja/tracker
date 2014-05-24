@@ -1,36 +1,25 @@
 package org.goja.tracker.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import org.goja.tracker.framework.AbstractEntity;
 
 @Entity
-public class Note implements Serializable {
+public class Note extends AbstractEntity implements Serializable {
 
 	private static final long serialVersionUID = 8808405428457396015L;
 
-	@Id
-	@GeneratedValue
-	private Long id;
-
+	@ManyToOne
 	private Ticket ticket;
 
+	@OneToOne
 	private User user;
 
-	private Date date;
-
-	private String note;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private String description;
 
 	public Ticket getTicket() {
 		return ticket;
@@ -48,20 +37,13 @@ public class Note implements Serializable {
 		this.user = user;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
 
 }
