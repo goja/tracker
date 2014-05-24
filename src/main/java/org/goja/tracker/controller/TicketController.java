@@ -39,6 +39,7 @@ public class TicketController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Map<String, Object> model, @ModelAttribute("ticket") Ticket ticket) {
+		logger.info("Saving ticket : " + ticket);
 		ticketService.save(ticket);
 		return "redirect:/ticket/findAll";
 	}

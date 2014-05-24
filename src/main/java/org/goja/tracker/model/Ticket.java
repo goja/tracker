@@ -86,4 +86,8 @@ public class Ticket extends AbstractEntity implements Serializable {
 	public void setNotes(List<Note> notes) {
 		this.notes = notes;
 	}
+
+	public String toString() {
+		return summary;
+	}
 }
