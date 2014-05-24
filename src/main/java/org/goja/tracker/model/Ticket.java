@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import org.goja.tracker.framework.AbstractEntity;
 import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Ticket extends AbstractEntity implements Serializable {
@@ -32,6 +33,7 @@ public class Ticket extends AbstractEntity implements Serializable {
 	@OneToOne
 	private User assignee;
 
+	@NotBlank(message = "Summary is required")
 	private String summary;
 
 	@OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
