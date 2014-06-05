@@ -3,4 +3,6 @@ urls
 credentials
 
 CI:
-jenkins
+git
+jenkins with post-receive hook to automatically build after any commit
+
