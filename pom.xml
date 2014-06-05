@@ -13,6 +13,12 @@
 		<org.hibernate.version>3.6.1.Final</org.hibernate.version>
 	</properties>
 	
+	<scm>
+        <connection>scm:git:raoul@raoul-ci:/git/tracker.git</connection>
+        <url>scm:git:raoul@raoul-ci:/git/tracker.git</url>
+        <developerConnection>scm:git:raoul@raoul-ci:/git/tracker.git</developerConnection>
+    </scm>
+	
 	<distributionManagement>
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
