@@ -3,7 +3,7 @@
 	<groupId>org.goja</groupId>
 	<artifactId>tracker</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.2</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>tracker Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
