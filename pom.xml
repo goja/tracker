@@ -13,9 +13,9 @@
 	</properties>
 	
 	<scm>
-        <connection>scm|git|raoul@raoul-ci:/git/tracker.git</connection>
-        <url>scm|git|raoul@raoul-ci:/git/tracker.git</url>
-        <developerConnection>scm|git|raoul@raoul-ci:/git/tracker.git</developerConnection>
+        <connection>scm|git|raoul@raoul-ci\:/git/tracker.git</connection>
+        <url>scm|git|raoul@raoul-ci\:/git/tracker.git</url>
+        <developerConnection>scm|git|raoul@raoul-ci\:/git/tracker.git</developerConnection>
     </scm>
 	
 	<distributionManagement>
