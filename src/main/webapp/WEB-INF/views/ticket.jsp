@@ -29,6 +29,11 @@ Summary:
 <form:input path="summary"/>
 </div>
 
+<div>
+Note:
+<input type="text" name="note">
+</div>
+
 <form:button value="submit">Submit</form:button>
 </form:form>
 
@@ -36,7 +41,8 @@ Summary:
 
 <c:forEach items="${tickets }" var="ticket">
   <tr>
-    <td>${ticket.summary }</td>
+    <td>${ticket.id} &nbsp; ${ticket.created} &nbsp; ${ticket.status} &nbsp; ${ticket.priority} &nbsp;
+    ${ticket.reporter.name} &nbsp; ${ticket.assignee.name} &nbsp; ${ticket.summary }</td>
   </tr>
 </c:forEach>
 

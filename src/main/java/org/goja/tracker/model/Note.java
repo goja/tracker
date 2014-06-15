@@ -45,5 +45,35 @@ public class Note extends AbstractEntity implements Serializable {
 		this.description = description;
 	}
 
+	public static class NoteBuilder {
+		private Note note;
+
+		public NoteBuilder() {
+			note = new Note();
+		}
+
+		public NoteBuilder withDescription(String description) {
+			note.description = description;
+			return this;
+		}
+
+		public NoteBuilder withTicket(Ticket ticket) {
+			note.ticket = ticket;
+			return this;
+		}
+
+		public NoteBuilder withUser(User user) {
+			note.user = user;
+			return this;
+		}
+
+		public static NoteBuilder note() {
+			return new NoteBuilder();
+		}
+
+		public Note build() {
+			return note;
+		}
+	}
 
 }
