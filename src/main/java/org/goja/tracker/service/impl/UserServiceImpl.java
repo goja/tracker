@@ -3,6 +3,8 @@ package org.goja.tracker.service.impl;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
 import org.goja.tracker.model.User;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
 
 	@Inject
 	private UserRepository userRepository;
+
+	@PersistenceContext
+	private EntityManager em;
 
 	@Cacheable("tracker")
 	public List<User> findAll() {
@@ -42,5 +47,11 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteAll();
 	}
 
+	public List<User> findAllOrderByName() {
+		// return em.createNativeQuery("select * from User order by name desc",
+		// org.goja.tracker.model.User.class)
+		// .getResultList();
+		return em.createQuery("from User order by name").getResultList();
+	}
 
 }

@@ -27,7 +27,7 @@ public class UserController {
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model) {
 		logger.info("*********** delegating to service");
-		model.put("users", userService.findAll());
+		model.put("users", userService.findAllOrderByName());
 		model.put("user", new User());
 		return "user";
 	}
