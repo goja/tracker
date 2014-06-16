@@ -6,8 +6,8 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.goja.tracker.model.User;
-import org.goja.tracker.service.UserService;
+import org.goja.tracker.model.Actor;
+import org.goja.tracker.service.ActorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,45 +16,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/actor")
+public class ActorController {
 
-	private Logger logger = Logger.getLogger(UserController.class);
+	private Logger logger = Logger.getLogger(ActorController.class);
 
 	@Inject
-	private UserService userService;
+	private ActorService actorService;
 
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model) {
 		logger.info("*********** delegating to service");
-		model.put("users", userService.findAllOrderByName());
-		model.put("user", new User());
-		return "user";
+		model.put("actors", actorService.findAllOrderByName());
+		model.put("actor", new Actor());
+		return "actor";
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable Long id) {
-		logger.info("Deleting user with id : " + id);
-		userService.delete(id);
-		return "redirect:/user/findAll";
+		logger.info("Deleting actor with id : " + id);
+		actorService.delete(id);
+		return "redirect:/actor/findAll";
 	}
 
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
 	public String deleteAll() {
-		logger.info("DELETING ALL USERS");
-		userService.deleteAll();
-		return "redirect:/user/findAll";
+		logger.info("DELETING ALL ACTORS");
+		actorService.deleteAll();
+		return "redirect:/actor/findAll";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Map<String, Object> model, @Valid @ModelAttribute("user") User user, 
+	public String save(Map<String, Object> model, @Valid @ModelAttribute("actor") Actor actor,
 			BindingResult bindingResult) {
 		if (!bindingResult.hasErrors()) {
-			logger.info("Saving user : " + user);
-			userService.save(user);
-			return "redirect:/user/findAll";
+			logger.info("Saving actor : " + actor);
+			actorService.save(actor);
+			return "redirect:/actor/findAll";
 		}
-		model.put("users", userService.findAll());
-		return "user";
+		model.put("actors", actorService.findAll());
+		return "actor";
 	}
 }

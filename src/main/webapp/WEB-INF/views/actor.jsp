@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 
-<form:form action="save" method="post" modelAttribute="user">
+<form:form action="save" method="post" modelAttribute="actor">
 <div>
 Name: <form:input path="name"/> <form:errors path="name" />
 </div>
@@ -11,10 +11,10 @@ Name: <form:input path="name"/> <form:errors path="name" />
 
 <table>
 
-<c:forEach items="${users }" var="user">
+<c:forEach items="${actors }" var="actor">
   <tr>
-    <td>${user.name }</td>
-    <td><a href="delete/${user.id }">Delete</a></td>
+    <td>${actor.name }</td>
+    <td><a href="delete/${actor.id }">Delete</a></td>
   </tr>
 </c:forEach>
 

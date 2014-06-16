@@ -28,10 +28,10 @@ public class Ticket extends AbstractEntity implements Serializable {
 	private Status status;
 
 	@OneToOne
-	private User reporter;
+	private Actor reporter;
 
 	@OneToOne
-	private User assignee;
+	private Actor assignee;
 
 	@NotBlank(message = "Summary is required")
 	private String summary;
@@ -55,19 +55,19 @@ public class Ticket extends AbstractEntity implements Serializable {
 		this.status = status;
 	}
 
-	public User getReporter() {
+	public Actor getReporter() {
 		return reporter;
 	}
 
-	public void setReporter(User reporter) {
+	public void setReporter(Actor reporter) {
 		this.reporter = reporter;
 	}
 
-	public User getAssignee() {
+	public Actor getAssignee() {
 		return assignee;
 	}
 
-	public void setAssignee(User assignee) {
+	public void setAssignee(Actor assignee) {
 		this.assignee = assignee;
 	}
 

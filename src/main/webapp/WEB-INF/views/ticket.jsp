@@ -16,12 +16,12 @@ Status:
 
 <div>
 Reporter: 
-<form:select path="reporter.id" items="${users }" itemValue="id" />
+<form:select path="reporter.id" items="${actors }" itemValue="id" />
 </div>
 
 <div>
 Assignee: 
-<form:select path="assignee.id" items="${users }" itemValue="id" />
+<form:select path="assignee.id" items="${actors }" itemValue="id" />
 </div>
 
 <div>

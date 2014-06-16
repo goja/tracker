@@ -17,7 +17,7 @@ public class Note extends AbstractEntity implements Serializable {
 	private Ticket ticket;
 
 	@OneToOne
-	private User user;
+	private Actor actor;
 
 	private String description;
 
@@ -29,13 +29,6 @@ public class Note extends AbstractEntity implements Serializable {
 		this.ticket = ticket;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public String getDescription() {
 		return description;
@@ -43,6 +36,14 @@ public class Note extends AbstractEntity implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Actor getActor() {
+		return actor;
+	}
+
+	public void setActor(Actor actor) {
+		this.actor = actor;
 	}
 
 	public static class NoteBuilder {
@@ -62,8 +63,8 @@ public class Note extends AbstractEntity implements Serializable {
 			return this;
 		}
 
-		public NoteBuilder withUser(User user) {
-			note.user = user;
+		public NoteBuilder withActor(Actor actor) {
+			note.setActor(actor);
 			return this;
 		}
 

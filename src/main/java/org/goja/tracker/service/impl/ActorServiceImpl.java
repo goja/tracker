@@ -7,51 +7,51 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
-import org.goja.tracker.model.User;
-import org.goja.tracker.repository.UserRepository;
-import org.goja.tracker.service.UserService;
+import org.goja.tracker.model.Actor;
+import org.goja.tracker.repository.ActorRepository;
+import org.goja.tracker.service.ActorService;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class ActorServiceImpl implements ActorService {
 
-	protected static final Logger logger = Logger.getLogger(UserServiceImpl.class);
+	protected static final Logger logger = Logger.getLogger(ActorServiceImpl.class);
 
 	@Inject
-	private UserRepository userRepository;
+	private ActorRepository actorRepository;
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Cacheable("tracker")
-	public List<User> findAll() {
+	public List<Actor> findAll() {
 		logger.info("******************* hitting database now");
-		return userRepository.findAll();
+		return actorRepository.findAll();
 	}
 
 	@CacheEvict(value = "tracker", allEntries = true)
-	public void save(User user) {
+	public void save(Actor actor) {
 		logger.info("******************* clearing cache");
-		userRepository.saveAndFlush(user);
+		actorRepository.saveAndFlush(actor);
 	}
 
 	@CacheEvict(value = "tracker", allEntries = true)
 	public void delete(Long id) {
-		userRepository.delete(id);
+		actorRepository.delete(id);
 	}
 
 	@CacheEvict(value = "tracker", allEntries = true)
 	public void deleteAll() {
-		userRepository.deleteAll();
+		actorRepository.deleteAll();
 	}
 
-	public List<User> findAllOrderByName() {
+	public List<Actor> findAllOrderByName() {
 		// return em.createNativeQuery("select * from User order by name desc",
 		// org.goja.tracker.model.User.class)
 		// .getResultList();
-		return em.createQuery("from User order by name").getResultList();
+		return em.createQuery("from Actor order by name").getResultList();
 	}
 
 }

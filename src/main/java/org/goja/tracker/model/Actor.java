@@ -8,7 +8,7 @@ import org.goja.tracker.framework.AbstractEntity;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-public class User extends AbstractEntity implements Serializable {
+public class Actor extends AbstractEntity implements Serializable {
 
 	private static final long serialVersionUID = 2159421639680213971L;
 

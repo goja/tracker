@@ -7,9 +7,9 @@ import javax.inject.Inject;
 import org.apache.log4j.Logger;
 import org.goja.tracker.model.Note;
 import org.goja.tracker.model.Ticket;
+import org.goja.tracker.service.ActorService;
 import org.goja.tracker.service.NoteService;
 import org.goja.tracker.service.TicketService;
-import org.goja.tracker.service.UserService;
 import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class TicketController {
 	protected static Logger logger = Logger.getLogger(TicketController.class);
 
 	@Inject
-	private UserService userService;
+	private ActorService actorService;
 
 	@Inject
 	private TicketService ticketService;
@@ -37,7 +37,7 @@ public class TicketController {
 	public String findAll(Map<String, Object> model) {
 		model.put("tickets", ticketService.findAll());
 		model.put("ticket", new Ticket());
-		model.put("users", userService.findAll());
+		model.put("actors", actorService.findAll());
 		model.put("priority", Priority.values());
 		model.put("status", Status.values());
 		return "ticket";
@@ -49,7 +49,7 @@ public class TicketController {
 		logger.info("Saving ticket : " + ticket);
 		ticketService.save(ticket);
 		final Note note = Note.NoteBuilder.note().withDescription(description).withTicket(ticket)
-				.withUser(ticket.getReporter())
+				.withActor(ticket.getReporter())
 				.build();
 		noteService.save(note);
 		return "redirect:/ticket/findAll";
