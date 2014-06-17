@@ -40,6 +40,7 @@ public class TicketController {
 		model.put("actors", actorService.findAll());
 		model.put("priority", Priority.values());
 		model.put("status", Status.values());
+		logger.info("********* " + ticketService.displaySummary());
 		return "ticket";
 	}
 

@@ -2,48 +2,30 @@ package org.goja.tracker.dto;
 
 import java.io.Serializable;
 
+import org.goja.tracker.util.Priority;
+import org.goja.tracker.util.Status;
+
 import com.google.common.base.Objects;
 
 public class SummaryDto implements Serializable {
 
 	private static final long serialVersionUID = 8300405118943847506L;
-	private String priority;
-	private String status;
 	private String summary;
 	private String reporter;
 	private String assignee;
-	private String note;
+	private Priority priority;
+	private Status status;
 
-	public String getPriority() {
-		return priority;
-	}
-
-	public void setPriority(String priority) {
+	public SummaryDto(Priority priority, Status status, String summary, String reporter, String assignee) {
 		this.priority = priority;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
 		this.status = status;
+		this.summary = summary;
+		this.reporter = reporter;
+		this.assignee = assignee;
 	}
 
 	public String getSummary() {
 		return summary;
-	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-
-	public String getReporter() {
-		return reporter;
-	}
-
-	public void setReporter(String reporter) {
-		this.reporter = reporter;
 	}
 
 	public String getAssignee() {
@@ -54,17 +36,40 @@ public class SummaryDto implements Serializable {
 		this.assignee = assignee;
 	}
 
-	public String getNote() {
-		return note;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setNote(String note) {
-		this.note = note;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+
 
 	public String toString() {
 		return Objects.toStringHelper(getClass()).add("priority", priority).add("status", status)
-				.add("summary", summary).add("reporter", reporter).add("assignee", assignee).add("note", note)
+				.add("summary", summary).add("reporter", reporter).add("assignee", assignee)
 				.toString();
 	}
+
+	public String getReporter() {
+		return reporter;
+	}
+
+	public void setReporter(String reporter) {
+		this.reporter = reporter;
+	}
+
+	public Priority getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Priority priority) {
+		this.priority = priority;
+	}
+
 }
