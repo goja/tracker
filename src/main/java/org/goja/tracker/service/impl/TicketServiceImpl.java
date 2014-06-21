@@ -37,4 +37,9 @@ public class TicketServiceImpl implements TicketService {
 		return em.createQuery(query).getResultList();
 	}
 
+	@Override
+	public void deleteAll() {
+		ticketRepository.deleteAll();
+	}
+
 }

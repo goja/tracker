@@ -47,7 +47,9 @@ public class ActorServiceImpl implements ActorService {
 		actorRepository.deleteAll();
 	}
 
+	@Cacheable("tracker")
 	public List<Actor> findAllOrderByName() {
+		logger.info("*********** hitting database now");
 		// return em.createNativeQuery("select * from User order by name desc",
 		// org.goja.tracker.model.User.class)
 		// .getResultList();

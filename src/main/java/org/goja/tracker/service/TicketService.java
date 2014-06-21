@@ -13,4 +13,5 @@ public interface TicketService {
 
 	List<SummaryDto> displaySummary();
 
+	void deleteAll();
 }

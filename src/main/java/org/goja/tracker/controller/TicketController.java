@@ -56,4 +56,11 @@ public class TicketController {
 		return "redirect:/ticket/findAll";
 	}
 
+	@RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
+	public String deleteAll() {
+		logger.info("DELETING ALL TICKETS");
+		ticketService.deleteAll();
+		return "redirect:/ticket/findAll";
+	}
+
 }
