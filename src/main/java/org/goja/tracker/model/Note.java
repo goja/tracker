@@ -1,7 +1,5 @@
 package org.goja.tracker.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -9,7 +7,7 @@ import javax.persistence.OneToOne;
 import org.goja.tracker.framework.AbstractEntity;
 
 @Entity
-public class Note extends AbstractEntity implements Serializable {
+public class Note extends AbstractEntity {
 
 	private static final long serialVersionUID = 8808405428457396015L;
 

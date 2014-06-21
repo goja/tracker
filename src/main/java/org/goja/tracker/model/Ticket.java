@@ -1,6 +1,5 @@
 package org.goja.tracker.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,9 +16,9 @@ import org.goja.tracker.util.Status;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-public class Ticket extends AbstractEntity implements Serializable {
+public class Ticket extends AbstractEntity {
 
-	private static final long serialVersionUID = 6232235360983944420L;
+	private static final long serialVersionUID = -8780970420284463018L;
 
 	@Enumerated(value = EnumType.STRING)
 	private Priority priority;

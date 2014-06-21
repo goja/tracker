@@ -1,5 +1,6 @@
 package org.goja.tracker.framework;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
@@ -9,8 +10,9 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
+@SuppressWarnings("serial")
 @MappedSuperclass
-public abstract class AbstractEntity {
+public abstract class AbstractEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
