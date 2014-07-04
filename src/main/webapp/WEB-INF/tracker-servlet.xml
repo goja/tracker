@@ -68,5 +68,7 @@
 	
 	<bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource"
         p:basenames="WEB-INF/i18n/messages" p:fallbackToSystemLocale="false" />
+        
+    <bean id="dozerBeanMapper" class="org.dozer.DozerBeanMapper" />
 
 </beans>

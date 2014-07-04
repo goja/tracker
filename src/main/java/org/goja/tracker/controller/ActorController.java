@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.goja.tracker.dto.ActorDto;
 import org.goja.tracker.framework.AbstractController;
 import org.goja.tracker.model.Actor;
 import org.goja.tracker.service.ActorService;
@@ -29,7 +30,7 @@ public class ActorController extends AbstractController {
 	public String findAll(Map<String, Object> model) {
 		logger.info("*********** delegating to service");
 		model.put("actors", actorService.findAllOrderByName());
-		model.put("actor", new Actor());
+		model.put("actor", new ActorDto());
 		return "actor";
 	}
 
@@ -48,9 +49,10 @@ public class ActorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Map<String, Object> model, @Valid @ModelAttribute("actor") Actor actor,
+	public String save(Map<String, Object> model, @Valid @ModelAttribute("actor") ActorDto actorDto,
 			BindingResult bindingResult) {
 		if (!bindingResult.hasErrors()) {
+			Actor actor = dozerBeanMapper.map(actorDto, Actor.class);
 			logger.info("Saving actor : " + actor);
 			actorService.save(actor);
 			return "redirect:/actor/findAll";

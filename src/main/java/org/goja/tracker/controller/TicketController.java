@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
+import org.goja.tracker.dto.TicketDto;
 import org.goja.tracker.framework.AbstractController;
 import org.goja.tracker.model.Note;
 import org.goja.tracker.model.Ticket;
@@ -37,7 +38,7 @@ public class TicketController extends AbstractController {
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model) {
 		model.put("tickets", ticketService.findAll());
-		model.put("ticket", new Ticket());
+		model.put("ticket", new TicketDto());
 		model.put("actors", actorService.findAll());
 		model.put("priority", Priority.values());
 		model.put("status", Status.values());
@@ -46,8 +47,9 @@ public class TicketController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Map<String, Object> model, @ModelAttribute("ticket") Ticket ticket,
+	public String save(Map<String, Object> model, @ModelAttribute("ticket") TicketDto ticketDto,
 			@RequestParam("note") String description) {
+		Ticket ticket = dozerBeanMapper.map(ticketDto, Ticket.class);
 		logger.info("Saving ticket : " + ticket);
 		ticketService.save(ticket);
 		final Note note = Note.NoteBuilder.note().withDescription(description).withTicket(ticket)

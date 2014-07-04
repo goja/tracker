@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import org.goja.tracker.framework.AbstractEntity;
 import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
-import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Ticket extends AbstractEntity {
@@ -32,7 +31,6 @@ public class Ticket extends AbstractEntity {
 	@OneToOne
 	private Actor assignee;
 
-	@NotBlank(message = "Summary is required")
 	private String summary;
 
 	@OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
