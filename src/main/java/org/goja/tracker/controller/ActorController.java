@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.goja.tracker.framework.AbstractController;
 import org.goja.tracker.model.Actor;
 import org.goja.tracker.service.ActorService;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/actor")
-public class ActorController {
+public class ActorController extends AbstractController {
 
 	private Logger logger = Logger.getLogger(ActorController.class);
 

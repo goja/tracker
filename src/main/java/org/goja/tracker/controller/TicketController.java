@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
+import org.goja.tracker.framework.AbstractController;
 import org.goja.tracker.model.Note;
 import org.goja.tracker.model.Ticket;
 import org.goja.tracker.service.ActorService;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/ticket")
-public class TicketController {
+public class TicketController extends AbstractController {
 
 	protected static Logger logger = Logger.getLogger(TicketController.class);
 

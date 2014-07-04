@@ -12,7 +12,7 @@ public class Actor extends AbstractEntity {
 	private static final long serialVersionUID = 2159421639680213971L;
 
 	@Column(unique = true)
-	@NotBlank(message = "Name is required")
+	@NotBlank(message = "{actor.name.required}")
 	private String name;
 
 	public String getName() {
