@@ -2,21 +2,21 @@ package org.goja.tracker.dto;
 
 import java.util.Date;
 
-import org.goja.tracker.model.Actor;
+import org.goja.tracker.framework.AbstractDto;
 import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-public class TicketDto {
+public class TicketDto extends AbstractDto {
 
 	private Priority priority;
 
 	private Status status;
 
-	private Actor reporter;
+	private ActorDto reporter;
 
-	private Actor assignee;
+	private ActorDto assignee;
 
 	private String summary;
 
@@ -39,19 +39,19 @@ public class TicketDto {
 		this.status = status;
 	}
 
-	public Actor getReporter() {
+	public ActorDto getReporter() {
 		return reporter;
 	}
 
-	public void setReporter(Actor reporter) {
+	public void setReporter(ActorDto reporter) {
 		this.reporter = reporter;
 	}
 
-	public Actor getAssignee() {
+	public ActorDto getAssignee() {
 		return assignee;
 	}
 
-	public void setAssignee(Actor assignee) {
+	public void setAssignee(ActorDto assignee) {
 		this.assignee = assignee;
 	}
 

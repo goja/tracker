@@ -18,12 +18,12 @@
 
 <div>
 <spring:message code="ticket.reporter" />: 
-<form:select path="reporter.id" items="${actors }" itemValue="id" />
+<form:select path="reporter" items="${actors }" itemValue="id" />
 </div>
 
 <div>
 <spring:message code="ticket.assignee" />: 
-<form:select path="assignee.id" items="${actors }" itemValue="id" />
+<form:select path="assignee" items="${actors }" itemValue="id" />
 </div>
 
 <div>

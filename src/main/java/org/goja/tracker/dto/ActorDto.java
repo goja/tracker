@@ -1,8 +1,9 @@
 package org.goja.tracker.dto;
 
+import org.goja.tracker.framework.AbstractDto;
 import org.hibernate.validator.constraints.NotBlank;
 
-public class ActorDto {
+public class ActorDto extends AbstractDto {
 
 	@NotBlank(message = "{actor.name.required}")
 	private String name;
