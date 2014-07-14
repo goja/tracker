@@ -1,5 +1,6 @@
 package org.goja.tracker.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,8 @@ import javax.persistence.OneToOne;
 import org.goja.tracker.framework.AbstractEntity;
 import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 public class Ticket extends AbstractEntity {
@@ -35,6 +38,9 @@ public class Ticket extends AbstractEntity {
 
 	@OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Note> notes;
+
+	@DateTimeFormat(iso = ISO.DATE)
+	private Date due;
 
 	public Priority getPriority() {
 		return priority;
@@ -86,5 +92,13 @@ public class Ticket extends AbstractEntity {
 
 	public String toString() {
 		return summary;
+	}
+
+	public Date getDue() {
+		return due;
+	}
+
+	public void setDue(Date due) {
+		this.due = due;
 	}
 }

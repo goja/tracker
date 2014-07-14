@@ -1,8 +1,12 @@
 package org.goja.tracker.dto;
 
+import java.util.Date;
+
 import org.goja.tracker.model.Actor;
 import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class TicketDto {
 
@@ -15,6 +19,9 @@ public class TicketDto {
 	private Actor assignee;
 
 	private String summary;
+
+	@DateTimeFormat(iso = ISO.DATE)
+	private Date due;
 
 	public Priority getPriority() {
 		return priority;
@@ -54,5 +61,13 @@ public class TicketDto {
 
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+
+	public Date getDue() {
+		return due;
+	}
+
+	public void setDue(Date due) {
+		this.due = due;
 	}
 }

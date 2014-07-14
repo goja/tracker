@@ -36,6 +36,11 @@
 <input type="text" name="note">
 </div>
 
+<div>
+<spring:message code="ticket.due" />:
+<input type="text" name="due">
+</div>
+
 <form:button value="submit"><spring:message code="label.submit" /></form:button>
 </form:form>
 
