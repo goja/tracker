@@ -16,4 +16,6 @@ public interface ActorService {
 
 	void deleteAll();
 
+	Actor findOne(Long id);
+
 }

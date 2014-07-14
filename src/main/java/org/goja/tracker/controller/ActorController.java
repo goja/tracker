@@ -2,14 +2,12 @@ package org.goja.tracker.controller;
 
 import java.util.Map;
 
-import javax.inject.Inject;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.goja.tracker.dto.ActorDto;
 import org.goja.tracker.framework.AbstractController;
 import org.goja.tracker.model.Actor;
-import org.goja.tracker.service.ActorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,10 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/actor")
 public class ActorController extends AbstractController {
 
-	private Logger logger = Logger.getLogger(ActorController.class);
-
-	@Inject
-	private ActorService actorService;
+	protected static final Logger logger = Logger.getLogger(ActorController.class);
 
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model) {

@@ -31,6 +31,12 @@ public class ActorServiceImpl implements ActorService {
 		return actorRepository.findAll();
 	}
 
+	@Cacheable("tracker")
+	public Actor findOne(Long id) {
+		logger.info("******************* hitting database now");
+		return actorRepository.findOne(id);
+	}
+
 	@CacheEvict(value = "tracker", allEntries = true)
 	public void save(Actor actor) {
 		logger.info("******************* clearing cache");
