@@ -11,6 +11,8 @@
 	<properties>
 		<org.springframework.version>3.2.5.RELEASE</org.springframework.version>
 		<org.hibernate.version>3.6.1.Final</org.hibernate.version>
+		<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
+		<org.aspectj.version>1.8.1</org.aspectj.version>
 	</properties>
 
 	<scm>
@@ -174,12 +176,22 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>1.8.1</version>
+			<version>${org.aspectj.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.1</version>
+			<version>${org.aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${org.codehaus.jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>${org.codehaus.jackson.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

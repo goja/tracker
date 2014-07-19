@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
 import org.goja.tracker.framework.AbstractEntity;
 import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
@@ -37,6 +38,7 @@ public class Ticket extends AbstractEntity {
 	private String summary;
 
 	@OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private List<Note> notes;
 
 	@DateTimeFormat(iso = ISO.DATE)
