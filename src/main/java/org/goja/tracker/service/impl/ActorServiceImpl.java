@@ -54,12 +54,12 @@ public class ActorServiceImpl implements ActorService {
 	}
 
 	@Cacheable("tracker")
-	public List<Actor> findAllOrderByName() {
+	public List<Actor> findAllOrderByUserName() {
 		logger.info("*********** hitting database now");
 		// return em.createNativeQuery("select * from User order by name desc",
 		// org.goja.tracker.model.User.class)
 		// .getResultList();
-		return em.createQuery("from Actor order by name").getResultList();
+		return em.createQuery("from Actor order by userName").getResultList();
 	}
 
 }

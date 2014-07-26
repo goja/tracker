@@ -49,7 +49,7 @@
 <c:forEach items="${tickets }" var="ticket">
   <tr>
     <td>${ticket.id} &nbsp; ${ticket.created} &nbsp; ${ticket.status} &nbsp; ${ticket.priority} &nbsp;
-    ${ticket.reporter.name} &nbsp; ${ticket.assignee.name} &nbsp; ${ticket.summary }</td>
+    ${ticket.reporter.userName} &nbsp; ${ticket.assignee.userName} &nbsp; ${ticket.summary }</td>
   </tr>
 </c:forEach>
 

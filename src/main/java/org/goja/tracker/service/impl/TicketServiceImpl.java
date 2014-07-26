@@ -22,7 +22,7 @@ public class TicketServiceImpl implements TicketService {
 	private EntityManager em;
 
 	private final String query = "select new org.goja.tracker.dto.SummaryDto "
-			+ "(t.priority, t.status, t.summary, t.reporter.name, t.assignee.name) from Ticket t";
+			+ "(t.priority, t.status, t.summary, t.reporter.userName, t.assignee.userName) from Ticket t";
 
 	public List<Ticket> findAll() {
 		return ticketRepository.findAll();

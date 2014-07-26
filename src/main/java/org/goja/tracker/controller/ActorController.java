@@ -24,7 +24,7 @@ public class ActorController extends AbstractController {
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model) {
 		logger.info("*********** delegating to service");
-		model.put("actors", actorService.findAllOrderByName());
+		model.put("actors", actorService.findAllOrderByUserName());
 		model.put("actor", new ActorDto());
 		return "actor";
 	}
@@ -34,6 +34,14 @@ public class ActorController extends AbstractController {
 		logger.info("Deleting actor with id : " + id);
 		actorService.delete(id);
 		return "redirect:/actor/findAll";
+	}
+
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+	public String update(Map<String, Object> model, @PathVariable Long id) {
+		Actor actor = actorService.findOne(id);
+		model.put("actors", actorService.findAllOrderByUserName());
+		model.put("actor", dozerBeanMapper.map(actor, ActorDto.class));
+		return "actor";
 	}
 
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
@@ -47,8 +55,14 @@ public class ActorController extends AbstractController {
 	public String save(Map<String, Object> model, @Valid @ModelAttribute("actor") ActorDto actorDto,
 			BindingResult bindingResult) {
 		if (!bindingResult.hasErrors()) {
-			Actor actor = dozerBeanMapper.map(actorDto, Actor.class);
-			logger.info("Saving actor : " + actor);
+			Actor actor = null;
+			if (actorDto.getId() == null) {
+				actor = dozerBeanMapper.map(actorDto, Actor.class);
+			} else {
+				actor = actorService.findOne(actorDto.getId());
+				dozerBeanMapper.map(actorDto, actor);
+			}
+
 			actorService.save(actor);
 			return "redirect:/actor/findAll";
 		}

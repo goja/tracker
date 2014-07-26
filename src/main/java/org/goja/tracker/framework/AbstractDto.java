@@ -2,13 +2,18 @@ package org.goja.tracker.framework;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class AbstractDto {
 
 	protected Long id;
 
-	protected Date created;
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	protected Date created = new Date();
 
-	protected Date modified;
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	protected Date modified = new Date();
 
 	protected Integer version;
 

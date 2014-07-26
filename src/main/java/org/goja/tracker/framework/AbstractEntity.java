@@ -11,6 +11,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Version;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @SuppressWarnings("serial")
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
@@ -19,8 +22,10 @@ public abstract class AbstractEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 
+	@DateTimeFormat(iso = ISO.DATE_TIME)
 	protected Date created;
 
+	@DateTimeFormat(iso = ISO.DATE_TIME)
 	protected Date modified;
 
 	@Version

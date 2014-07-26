@@ -8,7 +8,7 @@ public interface ActorService {
 
 	List<Actor> findAll();
 
-	List<Actor> findAllOrderByName();
+	List<Actor> findAllOrderByUserName();
 
 	void save(Actor actor);
 
