@@ -44,6 +44,18 @@ public class Ticket extends AbstractEntity {
 	@DateTimeFormat(iso = ISO.DATE)
 	private Date due;
 
+	public Ticket(Date due, Priority priority, Status status, String summary, Actor assignee, Actor reporter) {
+		this.due = due;
+		this.priority = priority;
+		this.status = status;
+		this.summary = summary;
+		this.assignee = assignee;
+		this.reporter = reporter;
+	}
+
+	public Ticket() {
+	}
+
 	public Priority getPriority() {
 		return priority;
 	}
@@ -103,4 +115,5 @@ public class Ticket extends AbstractEntity {
 	public void setDue(Date due) {
 		this.due = due;
 	}
+
 }

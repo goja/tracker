@@ -24,6 +24,16 @@ public class Actor extends AbstractEntity {
 	@NotBlank(message = "{actor.email.required}")
 	private String email;
 
+	public Actor(String email, String firstName, String lastName, String username) {
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		userName = username;
+	}
+
+	public Actor() {
+	}
+
 	public String toString() {
 		return userName;
 	}
@@ -59,6 +69,5 @@ public class Actor extends AbstractEntity {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 }

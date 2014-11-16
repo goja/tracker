@@ -14,4 +14,8 @@ public interface TicketService {
 	List<SummaryDto> displaySummary();
 
 	void deleteAll();
+
+	void delete(Long id);
+
+	Ticket findOne(Long id);
 }

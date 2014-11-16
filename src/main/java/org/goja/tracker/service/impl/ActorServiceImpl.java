@@ -38,9 +38,10 @@ public class ActorServiceImpl implements ActorService {
 	}
 
 	@CacheEvict(value = "tracker", allEntries = true)
-	public void save(Actor actor) {
+	public Actor save(Actor actor) {
 		logger.info("******************* clearing cache");
 		actorRepository.saveAndFlush(actor);
+		return actor;
 	}
 
 	@CacheEvict(value = "tracker", allEntries = true)

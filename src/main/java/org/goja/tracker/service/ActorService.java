@@ -10,7 +10,7 @@ public interface ActorService {
 
 	List<Actor> findAllOrderByUserName();
 
-	void save(Actor actor);
+	Actor save(Actor actor);
 
 	void delete(Long id);
 

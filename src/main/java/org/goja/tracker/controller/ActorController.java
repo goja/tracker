@@ -24,7 +24,7 @@ public class ActorController extends AbstractController {
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public String findAll(Map<String, Object> model) {
 		logger.info("*********** delegating to service");
-		model.put("actors", actorService.findAllOrderByUserName());
+		model.put("actors", actorService.findAll());
 		model.put("actor", new ActorDto());
 		return "actor";
 	}
@@ -39,7 +39,7 @@ public class ActorController extends AbstractController {
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
 	public String update(Map<String, Object> model, @PathVariable Long id) {
 		Actor actor = actorService.findOne(id);
-		model.put("actors", actorService.findAllOrderByUserName());
+		model.put("actors", actorService.findAll());
 		model.put("actor", dozerBeanMapper.map(actor, ActorDto.class));
 		return "actor";
 	}

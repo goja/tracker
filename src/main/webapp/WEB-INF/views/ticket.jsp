@@ -4,7 +4,7 @@
 
 <h3><spring:message code="ticket.header" /></h3>
 
-<form:form action="save" method="post" modelAttribute="ticket">
+<form:form action="/tracker/ticket/save" method="post" modelAttribute="ticket">
 
 <div>
 <spring:message code="ticket.priority" />: 
@@ -41,6 +41,11 @@
 <input type="text" name="due">
 </div>
 
+<form:hidden path="id"/>
+<form:hidden path="created"/>
+<form:hidden path="modified"/>
+<form:hidden path="version"/>
+
 <form:button value="submit"><spring:message code="label.submit" /></form:button>
 </form:form>
 
@@ -50,6 +55,8 @@
   <tr>
     <td>${ticket.id} &nbsp; ${ticket.created} &nbsp; ${ticket.status} &nbsp; ${ticket.priority} &nbsp;
     ${ticket.reporter.userName} &nbsp; ${ticket.assignee.userName} &nbsp; ${ticket.summary }</td>
+    <td><a href="/tracker/ticket/update/${ticket.id }"><spring:message code="label.update" /></a></td>
+    <td><a href="/tracker/ticket/delete/${ticket.id }"><spring:message code="label.delete" /></a></td>
   </tr>
 </c:forEach>
 

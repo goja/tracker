@@ -12,6 +12,7 @@ import org.goja.tracker.util.Priority;
 import org.goja.tracker.util.Status;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,6 +59,24 @@ public class TicketController extends AbstractController {
 	@ResponseBody
 	public List<Ticket> findAllJson() {
 		return ticketService.findAll();
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable Long id) {
+		logger.info("Deleting ticket with id : " + id);
+		ticketService.delete(id);
+		return "redirect:/ticket/findAll";
+	}
+
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+	public String update(Map<String, Object> model, @PathVariable Long id) {
+		Ticket ticket = ticketService.findOne(id);
+		model.put("tickets", ticketService.findAll());
+		model.put("ticket", dozerBeanMapper.map(ticket, TicketDto.class));
+		model.put("actors", actorService.findAll());
+		model.put("priority", Priority.values());
+		model.put("status", Status.values());
+		return "ticket";
 	}
 
 }

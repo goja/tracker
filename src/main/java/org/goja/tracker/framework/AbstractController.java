@@ -54,5 +54,10 @@ public abstract class AbstractController {
 			final ActorDto actorDto = beanMapper.map(actor, ActorDto.class);
 			setValue(actorDto);
 		}
+
+		@Override
+		public String getAsText() {
+			return getValue() == null ? null : ((ActorDto) getValue()).getId().toString();
+		}
 	}
 }
