@@ -31,6 +31,8 @@ public abstract class AbstractEntity implements Serializable {
 	@Version
 	protected Integer version;
 
+	private Boolean deleted = Boolean.FALSE;
+
 	@PrePersist
 	public void prePersist() {
 		created = modified = new Date();
@@ -71,5 +73,13 @@ public abstract class AbstractEntity implements Serializable {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
 	}
 }

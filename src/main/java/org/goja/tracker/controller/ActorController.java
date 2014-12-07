@@ -1,5 +1,6 @@
 package org.goja.tracker.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -8,12 +9,14 @@ import org.apache.log4j.Logger;
 import org.goja.tracker.dto.ActorDto;
 import org.goja.tracker.framework.AbstractController;
 import org.goja.tracker.model.Actor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/actor")
@@ -32,7 +35,14 @@ public class ActorController extends AbstractController {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable Long id) {
 		logger.info("Deleting actor with id : " + id);
-		actorService.delete(id);
+		try {
+			actorService.delete(id);
+		} catch (DataIntegrityViolationException e) {
+			logger.info("Performing soft delete : " + id);
+			Actor actor = actorService.findOne(id);
+			actor.setDeleted(Boolean.TRUE);
+			actorService.save(actor);
+		}
 		return "redirect:/actor/findAll";
 	}
 
@@ -68,5 +78,11 @@ public class ActorController extends AbstractController {
 		}
 		model.put("actors", actorService.findAll());
 		return "actor";
+	}
+
+	@RequestMapping(value = "/findAllJson", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Actor> findAllJson() {
+		return actorService.findAll();
 	}
 }

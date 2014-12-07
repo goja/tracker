@@ -7,6 +7,7 @@ import org.goja.tracker.framework.AbstractEntity;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
+// @Where(clause = "deleted='false'")
 public class Actor extends AbstractEntity {
 
 	private static final long serialVersionUID = 2159421639680213971L;
@@ -24,11 +25,11 @@ public class Actor extends AbstractEntity {
 	@NotBlank(message = "{actor.email.required}")
 	private String email;
 
-	public Actor(String email, String firstName, String lastName, String username) {
+	public Actor(String email, String firstName, String lastName, String userName) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		userName = username;
+		this.userName = userName;
 	}
 
 	public Actor() {

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <h3><spring:message code="actor.header" /></h3>
+[<a href="/tracker/actor/findAll">create new</a>]
 
 <form:form action="/tracker/actor/save" method="post" modelAttribute="actor">
 

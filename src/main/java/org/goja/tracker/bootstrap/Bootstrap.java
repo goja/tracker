@@ -39,7 +39,7 @@ public class Bootstrap extends AbstractController {
 		ticketService.save(new Ticket(due, priority, status, summary, assignee, reporter));
 	}
 
-	private Actor createActor(String email, String firstName, String lastName, String username) {
-		return actorService.save(new Actor(email, firstName, lastName, username));
+	private Actor createActor(String email, String firstName, String lastName, String userName) {
+		return actorService.save(new Actor(email, firstName, lastName, userName));
 	}
 }
