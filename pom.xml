@@ -265,7 +265,7 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<url>https://raoul-cas/manager/text</url>
+					<url>https://raoul-node/manager/text</url>
 					<server>raoul-cas</server>
 					<path>/tracker</path>
 				</configuration>
